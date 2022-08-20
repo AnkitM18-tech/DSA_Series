@@ -1,0 +1,11 @@
+creator : Bjarne Stroustrup - 1979 - C with classes - 1983 - C++ named - Simula67 1st OOPs Language.
+C++ mid level language.Both low level and high level programming can be done using C++.
+3 separate programming traditions : procedural like C , object oriented and generic supported by C++ templates.
+C++ can use existing C software libraries. C follows top down approach of programming but C++ follows bottom up approach of programming. - means you do all detailing work and define all functionalities first and then assemble everything and decide the flow of program. main function is written at the end (assembling).
+Any entity in the system that can be defined as a set of properties and set of operations performed using entity's property set, is knows as Object.
+Encapsulation, Data Hiding, Abstraction, Polymorphism, Inheritance.
+Class is a blueprint of an Object. Class is a description of object's property set and set of operations.
+Object is a run time entity, not class. Class is means to achieve encapsulation. 
+
+.cpp ---> preprocessor (connects header files content to our program) <---- header files which returns --> .i files, which contains all the content from our files and header files excluding the #include .---> compiler ----> gives .obj file (.i files are not saved anywhere but they are built in the ram) (compiler translates our .i file and create .obj file.)
+.obj ---> linker <---- library files ====> .exe file which can be executed. Linker converts .obj file to .exe using library files.

@@ -1,0 +1,4 @@
+Big O Notation -> In computer science, big O notation is used to classify algorithms according to how their run time or space requirements grow as the input size grows.
+
+f(n) = O(g(n))[ f is Big-O of g ] or f <= g if there exist constants N and c so that for all n >= N, f(n) <= c*g(n).
+

@@ -1,0 +1,9 @@
+int x=5 ;  ----> variable
+int* p ; -----> pointer
+p = &x ; ----> p stores address of x
+int &y = x ; ----> reference variable --> y represents x --> y++ will increase x.
+Reference means address
+Reference variable is an internal pointer
+Declaration of reference variable is preceded with & symbol( do not read address of). must be initialized during declaration.
+can be initialized with already declared variables only.
+can not be updated reference variables. unlike pointers, which can be updated. reference variables will internally point to the variable with which it is initialized.(represent)

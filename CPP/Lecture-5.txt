@@ -1,0 +1,98 @@
+Functions are a block of code performing a unit task
+Function is a way of achieving modularization
+Predefined functions are declared in header files and defined in library files
+
+void fun();  ----> declaration
+fun(); ------> call
+
+void fun(){
+	cout << "In fun";   ---------> definition
+}
+
+if we declare function outside main() then it is global and can be called from anywhere in the function
+
+function declaration is also known as function prototype. function needs to be declared before use just like variables. can be declared locally and globally.
+
+ReturnType functionName(argumentList) --> declaration
+Ways to define function ----->
+Takes Nothing  -----> Returns 	Nothing
+	Something				Something
+	
+int sum(int, int); ----> declare
+
+int s = sum(a,b) ---> actual arguments a,b
+
+int sum(int x, int y){  ---> formal arguments x,y
+return x+y;
+}
+
+Types of formal argument --> Ordinary variables of any type --> call by value
+				   --> Pointer variables --> call by address
+				   --> Reference Variables --> call by reference
+				  
+int sum(int*, int*); ----> declare
+
+int s = sum(&a,&b) ---> actual arguments a,b
+
+int sum(int* x, int* y){  ---> formal arguments x,y
+return (*x+*y);
+}
+
+int sum(int&, int&); ----> declare
+
+int s = sum(a,b) ---> actual arguments a,b
+
+int sum(int& x, int& y){  ---> formal arguments x,y
+return x+y;
+}
+
+
+Benefits of function -->
+
+Easy to read, modify, debug
+Better memory utilization
+Avoid rewriting of same code
+
+Function saves memory --> Function in a program is to save memory space which becomes appreciable when a function is likely to be called many times
+
+When a function is called memory is allocated and then after execution it is been released then next function is loaded, so the function is allotted memory only for the time it is being executed.
+
+However every time a function is called, it takes lot of extra time in executing a series of instructions for such tasks as jumping to functions, saving registers, pushing arguments into stack and returning to the calling function.
+
+When function is small it is worthless to spend so much extra time in such tasks in cost of saving comparatively small space.
+
+To eliminate the cost of calls to small functions, C++ proposes a new feature called inline function
+
+An inline function is a function that is expanded in line when it is invoked.
+
+Compiler replaces the function call with the corresponding function code.
+
+Inline is a request not a command
+
+The benefit of speed of inline functions reduces as the function grows in size
+
+compiler may ignore the request in some situations -->
+	--> Function containing loops, switch, goto
+	--> Function with recursion
+	--> containing static variable
+	
+#include<iostream.h>
+inline void fun();  -->declaration
+
+void main(){
+cout << ;
+fun();       --> call
+}
+
+void fun(){
+cout << ;
+} --> definition
+
+If you are setting a default value to an argument then you need to set default value to every element after that.
+
+Function overloading is resolved by -->
+-C++ tries to find an exact match. This is case where the actual argument exactly matches the parameter type of one of the overload functions
+-If no exact match is found, C++  tries to find a match through promotion
+	--> Char, unsigned char, short is promoted to an int
+	-->Float is promoted to double
+-If no promotion is found ,C++ tries to find a match through standard conversion.

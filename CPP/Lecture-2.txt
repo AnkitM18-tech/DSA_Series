@@ -1,0 +1,6 @@
+Constants ---> Any information/Data is constant.
+|- Primary ---> Integer , Real, Character
+|- Secondary ----> Array, String, Pointer, Union, Structure, Enumerator, Class
+
+In Memory === When a program starts it first gets loaded in the RAM, consumes some memory. In 16 bit architecture program gets 64 KB memory in RAM , which is majorly divided into 2 sections ---> one to store instructions and one to store data.
+Variables are names of memory locations where we store data. (combinations of a-z, A-Z, digit and _).

@@ -1,0 +1,29 @@
+Structure is a collection of dissimilar elements. Way to group variables. Used to create data type.
+
+struct book {
+	int book_id;
+	char title[20];
+	float price;
+	void input() {
+		cout << ;
+		cin >> book_id >> title >> price;
+	}
+	void display() {
+		cout << "\n" << book_id << … ;
+	}
+}b3;  -->Global
+		Both are valid
+book b2; --> Global 
+
+void main() {
+	book b1 = {100, "Howdy!",450.0}; --> local variable
+	book b2,b3;
+	b2.book_id = 101;
+	strcpy(b2.title,"Howdy Returns"); --> to assign string value to char array
+	b2.price = 451.0; 
+	b3 = b2;  --> this is also possible direct copy
+}
+
+C++ structs can contain functions too. we can access those using . operator .
+
+We can use access modifiers public, private and protected in structures to decide which members can be accessed by whom.

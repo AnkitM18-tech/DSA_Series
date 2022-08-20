@@ -1,0 +1,63 @@
+Data Persistence -> The variable's data will be lost when the function or program will stop. So sometimes we need to store the data.
+
+#include<fstream.h> -> header file for file handling -> having declaration of fstream, ifstream, ofstream 
+
+void main() {
+	ofstream fout;
+	fout.open("myFile.dat"); // mention the path of the file
+	fout << "hello"; //file will be created and hello will be saved but it will be in ram, we need to close the file to completely save the file in hard disk. save changes
+	fout.close();
+}
+
+void main() {
+	ifstream fin;
+	char ch;
+	fin.open("myFile.dat");
+	fin >> ch; // >> operator thinks " " as data separator and don't consider it in file so we can use ch = fin.get();
+	//to get entire file content
+	while(!fin.eof()) {
+		cout<<ch;
+		ch = fin.get();
+	}
+	fin.close();
+}
+
+File Opening mode -> 
+ios::in -> input/read
+ios::out -> output/write
+ios::app -> append
+ios::ate -> update
+ios:: binary -> binary
+
+fout.open("myFile.dat", ios::out);
+
+fout.open("myFile.dat", ios::app | ios::binary); // append mode with binary
+//reading methods are in ifstream and writing methods are in ofstream . They can't access others methods
+
+if you don't provide file_opening_mode then it will take default arguments.
+
+Text mode is the default opening mode. -> if you don't specify ios::binary then it will open in text mode
+Binary mode can be specified with ios::binary
+
+\n -> will be saved as it is \n in the file if opened in text mode and will be saved as new line if opened in binary mode.
+
+tellg() -> defined in istream class -> prototype is streampos tellg();
+returns the position of the current character in the input stream. -> pos = fin.tellg()
+
+tellp() -> defined in ostream class -> prototype is streampos tellp();
+returns position of the current character in the output stream. -> pos = fout.tellp()
+
+when you open file in append mode, then the pointer will ignore the previous content -> it will start from the end considering it as 0 index.
+
+
+
+
+
+
+
+
+
+
+
+
+

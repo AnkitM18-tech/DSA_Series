@@ -1,0 +1,36 @@
+// in cpp everything i.e variable passed to function is pass by value exception is array, it is passed by pointer/reference as there are multiple values stored in array.
+/*
+ void do_stuff(int x){
+	x = 13;
+ }
+
+ int x = 5;
+ do_stuff(x); // the value 5 is copied into the variable x that is passed as parameter.
+
+after function call x=5
+
+ so there will be two memory locations where x is stored. and the x inside the function is only changing, not the x that is passed.
+
+ inside function ---> x=13,  outside function ----> x=5 ----> both are distinct
+
+
+in case of array, int data[] = {1,2,3,4} ---> the changes to the array inside the function will reflect outside. as the variable points to the array address that is passed.
+
+void do_stuff(int x[]){
+
+}
+
+int x[];
+do_stuff(x);  --> it decays to a pointer and points to the first element of the array.
+
+
+If we manually want to pass the data by reference, we need to add "&" before the variable and then they will point to the same shared memory.
+
+void do_stuff(int &y){ // &y is an alias for x --- > point to same memory location
+	x = 13;
+}
+
+ int x = 5;
+ do_stuff(x); // after the function call x =13
+
+*/

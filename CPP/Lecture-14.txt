@@ -1,0 +1,64 @@
+When you make a child class and don't write any constructors then compiler will run constructor for child class and call the constructor for the parent class as in the child class there are both the members of child and parent class.
+
+class A {
+	public:
+		A(){}
+};
+
+class B: public A {  --> if we don't write any constructor then compiler will call the constructor of A from B itself. after the constructor of A run then constructor of B will run.
+	public:
+		B() : A() {}
+};
+
+void main() {
+	B obj;
+}
+
+In inheritance constructor execution flow is parent --> child order
+But calling flow is child --> parent order
+
+Compiler will call default constructor and if there is a constructor defined by us which needs arguments then it will throw error.
+
+So if there is a constructor defined in parent class then we need to make one in child class and call the parent constructor as well to avoid error.
+
+class A {
+	int a;
+	public:
+		A(int k){a=k;}
+};
+
+class B: public A { 
+	public:
+		B() : A(5) {}
+};
+
+void main() {
+	B obj;
+}
+
+
+class A {
+	int a;
+	public:
+		A(int k){a=k;}
+		~A() { }
+};
+
+class B: public A { 
+	int b;
+	public:
+		B(int x, int y) : A(x) {b=y;}
+		~B() { }
+};
+
+void main() {
+	B obj(2,3);
+}
+
+if we want to call parent class's parameterized constructor from child class then we need to write it, otherwise the compiler will call the default constructor.
+
+destructor call and execution flow will be child destructor --> parent destructor (order)
+
+if you don't write parent class destructor call step then compiler will by default write destructor call for parent from child class destructor.
+
+

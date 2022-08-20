@@ -1,0 +1,27 @@
+A pointer contains address of an object is called Object Pointer.
+
+type of data = type of pointer
+
+class Box {
+	private:
+		int l, b, h;
+	public:
+		void setDimension(int x, int y, int z) {
+			l=x; b=y; h=z;
+		}
+		void showDimension() {
+			cout << l << b << h ;
+		}
+};
+
+void main() {
+	Box *p, smallBox;
+	p = &smallBox;
+	smallBox.setDimension(12,13,14); || p --> setDimension(12,10,14);
+	smallBox.showDimension(); || p --> showDimension();
+}
+
+"this" is a local object pointer in every instance member function containing address of the caller object.
+"this" pointer can not be modified. It is used to refer caller object in member function.
+
+this->l = l; this->b = b; this->h = h; inside the method if the parameters and variables names are same.

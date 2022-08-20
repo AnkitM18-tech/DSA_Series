@@ -1,0 +1,42 @@
+Constructor is a member function of a class. Name is same as the name of the class.
+It has no return type, so can't use return keyword, must be an instance member function, that is , it can never be static.
+
+Constructor is implicitly invoked when an object is created, is used to solve the problem of initialization.
+
+Initializing the member variables.
+
+class Complex {
+	private:
+		int a, b;
+	public:
+		Complex(int x, int y) { --> parameterized constructor
+			a = x; b = y;
+		}
+		Complex(int k) { --> parameterized constructor
+			a=k;
+		}
+		Complex() {
+			a=0;b=0;
+		}
+};
+
+void main() {
+	Complex c1 = Complex(3,4) --> same as c1(3,4)  ,c2(5),c3,c4(3,8);
+}
+
+When an object is made, constructor will definitely be called. If no constructors are defined, default will run. --> If there is at least 1 constructor defined then compiler won't make any default constructor.  --> Complex() {} --> default constructor
+
+If there is one parameter in constructor it can be called like Complex c5 = 5;
+
+Complex c4(c1) / c4 = c1 is also valid, here the copy constructor will be called.
+	--> If no constructor is made in a class, then compiler makes two constructors.
+	--> Default and Copy Constructor, if we have defined any constructor then compiler won't make any default constructor but it will make copy constructor. And if we also make copy constructor then compiler won't make any.
+
+Copy Constructor -->	
+
+Complex(Complex &c) {  --> if we won't give & then it will invoke this constructor recursively, which will throw error. & will help to reference the complex object and compiler won't throw any error.
+	a = c.a;
+	b = c.b;
+}
+
+if we initialize the object with same class object type then copy constructor will be called. and reference variable is mandatory while defining parameter else it will throw error.

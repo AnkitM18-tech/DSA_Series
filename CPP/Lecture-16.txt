@@ -1,0 +1,21 @@
+SMA -> Static Memory Allocation
+DMA -> Dynamic Memory Allocation
+
+int x; float y; Complex c2; Student s1; --> Declaration Statements 
+
+Once allocated these memories can't change. --> Static Memory Allocation
+
+Also called Compile Time Memory Allocation. It is favourable when we know how much memory we need at the starting of program. We can SMA using declaration statements, they are understood by compilers.
+
+DMA can be done by using "new" keyword.
+int *p = new int; float *q = new float; Complex *ptr = new Complex; -> no names --> just return (pointers) to address.
+
+creating arrays -->
+float *q = new float[5];
+int x; cin >> x; int *p = new int[x];
+
+to release memory DMA we can use delete keyword --> delete p; delete []p;
+
+SMA has certain scope, so they(memory) get released after the execution of the scope block, but DMA remains throughout lifecycle of program until it is released.
+
+delete pointer_name; --> the value inside the pointed block gets deleted.

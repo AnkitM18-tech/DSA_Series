@@ -1,0 +1,5 @@
+Destructor is an instance member function of a class.
+Name is same as Class but preceded by tilde(~)
+can never be static, has no return type, takes no argument( no overloading possible)
+
+invoked implicitly when object is going to destroy. should be defined to release resources allocated to an object. We can release memory as long as the object is not destroyed. else after the object is destroyed and if there is a pointer in that object, that will also get deleted, so we can't access or release the resource it was pointing to, so memory waste.

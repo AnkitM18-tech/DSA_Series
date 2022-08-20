@@ -1,0 +1,23 @@
+Method Overriding
+class A {
+	public:
+		void f1() { }
+		void f2() { }
+};
+
+class B:public A {
+	void f1() { } // Method Overriding --> prototyping & name same then overriding
+	void f2(int x) { } //Method Hiding --> prototyping differ but name same hiding
+};
+
+void main() {
+	B obj;
+	obj.f1(); // B version will run
+	obj.f2(); // error as the name matches, it will not go the parent class
+	obj.f2(5); // B version 
+}
+
+Early Binding Concept --> the compiler will check what is the class of(type) object, then it will try to find the member there in the class and if found bind it with the class and run that, else go to the parent class of the that class, if found bind that with the object.
+
+For method overloading all the methods have to be in the same scope not in different scopes. --> void f2() { } 
+		 void f2(int x) { }

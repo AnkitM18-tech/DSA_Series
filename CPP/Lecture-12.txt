@@ -1,0 +1,120 @@
+Friend function is not a member function of a class to which it is a friend.
+
+Friend function is declared in class with friend keyword. Must be defined outside the class to which it is friend.
+
+
+friend function can access any member of the class to which it is friend
+Can not access members of the class directly. it has no caller object. Should not be defined with membership label.
+
+class Complex {
+	private:
+		int a, b ;
+	public:
+		void setData(int x, int y) { a=x; b=y ; }
+		void showData() { cout << "a "<< a << " b " << b; }
+		friend void fun(Complex); --> friend function declaration
+};
+
+void fun(Complex c) {
+	cout << "sum is " << c.a + c.b ;
+}
+
+void main() {
+	Complex c1,c2,c3;
+	c1.setData(3,4);
+	fun(c1);
+}
+
+friend function can become friend to more than one class.
+
+It doesn't matter where you define your friend function in private, public or protected as it is not a member function it can be defined anywhere in the class.
+
+class B; --> formal declaration so that compiler doesn't throw error at "here"
+class A {
+	private:
+		int a;
+	public:
+		friend void fun(A,B); -- here
+};
+
+class B {
+	private:
+		int b;
+	public:
+		friend void fun(A,B);
+};
+
+friend void fun(A,B) is friend function of both A and B, can access private members of both the classes and use them simultaneously.
+
+void fun(A o1, B o2) {
+	cout << o1.a + o2.b;
+}
+
+Overloading of operators as a friend function
+
+friend Complex operator +(Complex, Complex); --> inside class
+
+Complex operator+(Complex X, Complex Y) {
+	Complex temp;
+	temp.a = X.a + Y.a;
+	temp.b = X.b + Y.b;
+	return temp;
+}
+
+When a binary operator is overloaded we need to give only one argument if it is a member function, but  if it is a friend function then we need to pass two arguments.
+
+Same with unary operator overloading we need to give one argument --> hence we need to pass x+1 arguments in a friend function operator overloading function as compared to x arguments in a member overloading function.
+
+
+c3 = c1.operator+(c2) -->member ||  c3 = operator+(c1,c2) --> friend == c1 + c2
+
+i2 = i1.operator++() -->member || i2 = operator++(i1) --> friend == ++i1
+
+friend Complex operator -(Complex); --> inside class
+
+Complex operator-(Complex X) {
+	Complex temp;
+	temp.a = -X.a ;
+	temp.b = -X.b ;
+	return temp;
+}
+
+c2 = -c1 --> c2 = operator-(c1);  --> unary operator
+
+Overloading of insertion and extraction operator
+
+friend istream& operator >>(istream&, Complex&); --> inside class
+friend ostream& operator <<(ostream&, Complex); --> inside class
+
+ostream& operator <<(ostream& out, Complex C) {
+	out << " a " << C.a << " b " << C.b;
+	return out;
+}
+
+istream& operator <<(istream& in, Complex& C) {
+	in >> C.a >> C.b;
+	return in;
+}
+
+Member function of one class can become friend to another class
+
+class A {
+	public:
+		void fun() { … }
+		void foo() { … }
+		void moo() { … }
+};
+
+class B {
+	//friend void A::fun();
+	//friend void A::foo();
+	// If you want to make every member function friend function of class B then we can write -->
+	friend class A;  --> this will make every member function of class A as friend function of B.
+}
+
+
+
+
+
+
+

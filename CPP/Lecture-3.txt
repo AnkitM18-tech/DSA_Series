@@ -1,0 +1,5 @@
+In C standard o/p method --> printf() --> predefined function.
+In C++ standard way --> cout --> predefined object. << --> insertion/put to operator.
+Likewise for input it's cin --> >> --->extraction/get to operator.
+ANSI standards for C++ language says explicit declaration of function is compulsory. Header files only contains declaration in header files but definition is present in library files.
+Predefined functions are declared in header files, so whenever using any predefined functions , have to include specific header file that contains its declaration. endl is a manipulator works as "\n" with flush operation slower than "\n".

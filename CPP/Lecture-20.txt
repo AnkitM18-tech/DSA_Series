@@ -1,0 +1,73 @@
+Template --> The keyword template is used to define function template and class template. It is a way to make your function or class generalize as far as data type is concerned.
+
+->Function Template
+->Class Template
+
+template <class X(placeholder, can be anything)> 
+X big(X a, X b) { // replace data type with placeholder
+	if(a>b) {
+		return a;
+	} else {
+		return b;
+	}
+}
+-> Function template is also known as generic function
+
+template <class type> type func_name(type arg1,....); -> place holder will be replaced by appropriate data type. -> (type will be replaced by data type)
+
+if we want more than one place holder we can add,
+template <class X, class Y>
+X big(X a, Y b) {
+	if(a>b) {
+		return a;
+	} else {
+		return b;
+	}
+}
+
+-> Class template is also known as generic class
+
+template <class type> class class_name {…}; -> write the placeholder which you want to replace in place of type.
+
+template<class X> class ArrayList {
+	private:
+		struct ControlBlock {
+			int capacity;
+			X *arr_ptr;
+		};
+		ControlBlock *s;
+	public:
+		ArrayList(int capacity) {
+			s = new ControlBlock;
+			s->capacity = capacity;
+			s->arr_ptr = new X[s->capacity];
+		}
+		void addElement(int index, X data) {
+			if(index>=0 && index<=s->capacity-1) {
+				s->arr_ptr[index] = data;
+			} else {
+				cout << "\n Array index is not valid";
+			}
+		}
+		void viewElement(int index, X &data) {
+			if(index>=0 && index<=s->capacity-1) {
+				data = s->arr_ptr[index];
+			} else {
+				cout << "\n Array index is not valid";
+			}
+		}
+		void viewList() {
+			int i;
+			for(i=0;i<s->capacity;i++){
+				cout << " " << s -> arr_ptr[i];
+			}
+		}
+};
+
+int main() {
+	int data;
+	ArrayList <int>/<float> (whatever datatype you want, replace) list1(4);
+	list1.addElement(0,32);
+	list1.viewElement(0,data);
+	cout << data;
+}

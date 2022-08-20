@@ -1,0 +1,44 @@
+A do nothing function is pure virtual function.
+
+class Person {
+	public:
+		void fun()=0; --> will let the compiler know it is a do nothing function
+		void f1() { }
+};
+
+We can not make any objects of Person class, hence can't call fun() as it doesn't have any definition, so calling it, is prohibited. 
+
+class Student: public Person {
+	public:
+		void fun() {
+			
+		}
+};
+If we make any child class of a class which has do nothing functions or functions which don't have any definition then it is mandatory to override that function in child class with definition.
+
+If there is a do nothing function in a class then we can't make any objects of the class, hence can't access the members. so in order to access the members of that class we need to override the do nothing function in one of it's child class. In that way we can create objects of the child class and access the members.
+
+So in order to avoid the early binding with parent class we can make the do nothing function virtual.
+
+i.e. virtual void fun()=0; in Person class --> Pure Virtual Function which don't have any body/ definition.
+
+The class which contains at least one do nothing(pure virtual) function that is called an Abstract class. Here Person is an Abstract class.
+
+A class containing pure virtual function is an abstract class. We can not instantiate abstract class, can't make any objects.
+
+
+Abstract class is needed for generalisation purpose where we don't want to complicate things by storing unnecessary info. ex-> Person ---> Student
+								|-------> Faculty
+We are not interested in storing all info regarding person but it is superclass of Student and Faculty (generalise). Hence we make it an Abstract class coz we don't want to make object of person class. Where we feel like we don't want to make objects of a class we make it abstract.
+
+
+
+
+
+
+
+
+
+
+
+

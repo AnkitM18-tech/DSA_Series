@@ -1,0 +1,33 @@
+Static Local Variables are by default initialized to zero. Lifetime is throughout the program.
+
+void fun() {
+	static int x; --> by default value is 0. Gets memory at the starting of the program. and is destroyed after program ends.
+	int y; --> gets memory when the function is called and is destroyed when the function execution ends. by default garbage value
+}
+
+Static member variable declared inside the class body. Also known as class member variable. they must be defined outside the class. Static member variable does not belong to any object, but to whole class. There will be only one copy of static member variable for the whole class. any object can use the same copy of class variable. They can be used with class name.
+
+class Account {
+	private:
+		int balance; -->instance member variable
+		static float roi; --> class/static member variable 
+	public:
+		void setBalance (int b) {
+			balance = b;
+		}
+		static void setRoi ( float r) {  --> static member function can be called without object, if static keyword is not used then we need an object to call the instance member function. can only access static member variables of the class.
+			roi = r;
+		}
+};
+float Account:: roi=3.5f;  --> by default value 0 --> static member variable definition 
+
+void main() {
+	Account a1; --> only balance variable is created. roi is for class, only one copy. doesn't matter whether object is created or not.
+	Account:: roi = … ; --> if it was not private.
+	a1.setRoi(4.5f) ;
+	Account::setRoi(4.5f);
+}
+
+Static member function are qualified with static keyword, also called class member function. can be invoked with or without object. can only access static members of the class.
+
+

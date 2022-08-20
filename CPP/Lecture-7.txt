@@ -1,0 +1,40 @@
+The members of struct are by default public and the members of class are by default private.
+
+Objects consume memory not class.
+
+class Complex {
+	private:
+		int a, b;  --> instance member variables  --> only allotted memory when objects are created and they are different for all objects.
+	public: --> these are instance member functions -->only allotted memory when objects are created and functions are called and they are different for all objects. can be accessed by calling objects.
+		void set_data (int, int);
+		void show_data () {   --> defined inside class
+			cout << ;
+		}
+		Complex add(Complex c) {  --> adding 2 complex numbers
+			Complex temp;
+			temp.a = a + c.a ;
+			temp.b = b + c.b ;
+			return temp;
+		}
+};
+
+we can define member functions in both ways.--|
+
+void Complex:: set_data(int x, int y) {  --> defined using membership scope
+a=x; b=y;
+}
+
+void main() {
+	… 
+	Complex c1,c2,c3;
+	c1.set_data(3,4);
+	c2.set_data(5,6);
+	c3 = c1.add(c2);
+	c3.show_data();
+	… 
+}
+
+Object's state must only be changed via its methods ,not directly.
+Object's state = it's instance member variables values collection.
+Object's behaviour = it's instance member functions collection
+

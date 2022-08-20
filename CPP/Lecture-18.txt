@@ -1,0 +1,90 @@
+Base class pointer can point to the object of any of its descendant class, its converse is not true.
+
+class A {
+	public:
+		void f1() { }
+};
+
+class B: public A {
+	public:
+		void f1() { } // function overriding
+		void f2() { }
+};
+
+void main() {
+	A *p,o1;
+	B o2;
+	(p = &o1; ||)p = &o2; --> both are correct. parent class pointer can point to descendant objects.
+	o2.f1(); // B version --> at compile time compiler will see the object type and early binding will happen with the child object.
+	p->f1(); // at compile time, compiler will detect the class of p, not the address of the object inside it(pointer type).So at the time of early binding, compiler will see the pointer type and move to the parent class here A and try to find the function f1() and bind it with the object. So here A's f1() will run.
+}
+
+So to solve this problem we should let the compiler know to late bind i.e binding at the time of running instead of compiling. It can be achieved through virtual function.
+
+class A {
+	public:
+		virtual void f1() { } --> now compiler will know to do late binding --> so it can know the address of the object at run time and call the desired function. while calling through pointers.
+};
+
+By using virtual function we can achieve late binding, now the type of the pointer won't be considered the content of the pointer is considered i.e. the address it is pointing to.
+
+now p->f1(); will run B's f1().
+function f1 will be virtual in descendant classes as well. no need to mention it in every class.
+can make any number of virtual functions in a class.
+
+class A {
+	public:
+		void f1() { }
+		virtual void f2() { }
+		virtual void f3() { }
+		virtual void f4() { }
+};
+
+class B : public A {
+	public:
+		void f1() { }
+		void f2() { }
+		void f4(int x) { }
+};
+
+If there is at least one virtual function in a class, then compiler will declare a variable by itself in that class while creating an object -> with the name *_vptr if you check size of objects A & B then you can see difference in size. *_vptr is an instance member variable , so it won't be created again in descendant classes, as it will get inherited.
+
+Compiler will create a static array of pointers which will store address of functions. This array is called "vtable". It will be created for the class object which contains virtual function and for its descendant classes too. every descendant class object will have it's own different vtable.
+
+*_vptr contains address of the vtable of the object that is made from a class.
+If there is an object of A class then *_vptr will contain address of A class object vtable if it's B class object then it will contain address of B class object vtable.
+
+A vtable -> f2 f3 f4
+B vtable -> f2 f3 f4
+
+as f3 will be inherited to child class, and not overwritten it will remain a virtual function. f3 in B vtable will point to A's f3 as there is no overwritten f3 in B.
+
+f4 in B vtable will point to A's f4 as there is different prototype and definition of f4 in B and it's not virtual then. it's method hiding
+
+void main() {
+	A *p,o1;
+	p=&o1;  pointer's address will be considered in LB. In that object there is a *_vptr which will point to vtable and vtable has addresses of functions.
+	p->f1(); EB -> A f1() p type
+	p->f2(); LB -> A f2() p address
+	p->f3(); LB -> A f3() p address
+	p->f4(); LB -> A f4() p address
+	p->f4(5); EB -> error p type
+}
+
+void main() {
+	A *p;
+	B o2;
+	p=&o2; pointer's type will be considered in EB
+	p->f1(); EB -> A f1() p type
+	p->f2(); LB -> B f2() p address
+	p->f3(); LB -> A f3() p address
+	p->f4(); LB -> A f4() p address
+	p->f4(5); EB -> error p type
+}
+
+pointer(address) -> object -> vptr -> vtable -> functions
+
+
+
+
+

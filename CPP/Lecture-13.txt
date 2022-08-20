@@ -1,0 +1,53 @@
+Class is used to describe properties and behaviour of an object.
+Property names and values.
+Behaviour means actions.
+
+Inheritance is a process of inheriting properties and behaviours of existing class into a new class.
+
+Existing class = old class = Parent class = Base class
+
+class Base_class { };
+class Derived_Class : Visibility_Mode Base_class { };
+
+Example:
+class Car {};
+class SportsCar : public Car {};
+
+Types of Inheritance :-->
+	Single , Multiple, Multilevel, Hierarchical, Hybrid
+	
+	Single - class A {}; class B: public A {}; A --> B
+	Multilevel - class C: public B {}; A --> B --> C
+	Multiple - class A1 {}; class A2 {}; class B: public A1,public A2 {};
+		    --> A1 --> B <-- A2
+	Hierarchical - class A {}; class B1 : public A {}; class B2: public A {};
+		    --> A --> B1,B2
+	Hybrid - Mixture of more than one inheritance
+	
+One type of user will create Object of your class, Other type will create derived class from your class.
+
+Availability - When you create an object every member will be available (inherited) in that Object as in the original class.(all private, protected, public)
+Accessibility - But from the available members only Public members are accessible.
+
+Private members can not be accessed by any user whether creating an Object or deriving from base class. Protected members can be accessed by users deriving from base class.
+Public can be accessed by everyone.
+
+if child class is derived using private visibility mode then the protected and public members will be considered as private members for class B users. if protected mode then both will be considered as protected members for class B users, which means the child class can access the base class members. if public mode, then protected will remain protected type and public remain public type for child class Users.
+
+Is-a relationship --> Banana __is a__ fruit --> Inheritance
+relation b/w two classes is association relation
+	--> Aggregation
+	--> Composition
+	--> Inheritance
+
+Is a relationship is always implemented as a public inheritance.
+
+
+
+
+
+
+
+
+
+
